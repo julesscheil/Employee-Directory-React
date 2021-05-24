@@ -15,7 +15,7 @@ class Home extends Component {
 
 
 componentDidMount() {
-    API.getEmployees()
+    API.getUsers()
         .then((data) => {
             const sorted = data.data.results.sort(function (a, b) {
                 if (a.name.first < b.name.first) {
