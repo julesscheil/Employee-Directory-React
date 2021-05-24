@@ -1,17 +1,19 @@
 import React from "react";
 
-function SearchBox({ handleSearchChange }) {
+function SearchBox(props) {
   return (
     <div className="searchbox">
       <form className="form-inline">
-        <input
-          className="form-control"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          onChange={e => handleSearchChange(e)}
+        <input 
+        value={props.search}
+        onChange={props.handleInputChange}
+        name="employee"
+        list="employees"
+        className="form"
+        type="text"
+        placeholder="Search Here"
         />
-      </form>
+              </form>
     </div>
   );
 }
