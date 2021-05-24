@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import API from '../utils/API';
 import SearchForm from '../components/SearchBox';
-import SearchResults from '../components/SearchBox';
+import SearchResults from '../components/Results';
 
 class Home extends Component {
     state = {
