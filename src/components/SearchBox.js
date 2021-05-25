@@ -5,13 +5,13 @@ function SearchBox(props) { console.log("here ", props)
     <div className="searchbox">
       <form className="form-inline">
         <input 
-        value={props.search}
-        onChange={props.handleInputChange}
-        name="employee"
-        list="employees"
-        className="form"
-        type="text"
-        placeholder="Search Here"
+         onChange={props.handleSearch}
+         value={props.search}
+         name="search"
+         type="text"
+         className="form-control"
+         placeholder="Search by Last Name"
+         id="search"
         />
               </form>
     </div>
