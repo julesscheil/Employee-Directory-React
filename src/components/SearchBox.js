@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchBox(props) {
+function SearchBox(props) { console.log("here ", props)
   return (
     <div className="searchbox">
       <form className="form-inline">

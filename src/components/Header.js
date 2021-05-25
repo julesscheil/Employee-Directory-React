@@ -3,9 +3,9 @@ import React from 'react';
 
 function Header() {
       return (
-      <div className="header">
+      <div className="text-center">
         <h1>Employee Directory</h1>
-        <p>Type to search.</p>
+        <p>Type to search</p>
       </div>
     )
 }

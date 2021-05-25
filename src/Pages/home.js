@@ -6,52 +6,53 @@ import SearchForm from '../components/SearchBox';
 import SearchResults from '../components/Results';
 
 class Home extends Component {
-    state = {
-        search: "",
-        employees: [],
-        results: [],
-        error: "",
-    };
-
-
-componentDidMount() {
-    API.getUsers()
-        .then((data) => {
-            const sorted = data.data.results.sort(function (a, b) {
-                if (a.name.first < b.name.first) {
-                    return -1;
-                }
-                if (a.name.first > b.name.first) {
-                    return 1;
-                }
-                return 0;
-            })
-            this.setState({
-                employees: sorted,
-                results: sorted
-            })
-        }).catch((err) => console.log(err));
-};
-
-
-handleInputChange = (event) => {
-    this.setState({search:event.target.value});
-    const filtered = this.state.results.filter(employee => {
-        return employee.name.first.toLowerCase().indexOf(event.target.value)!==-1
-    })
-    this.setState({employees:filtered})
-};
-
-render() {
-    return (
-        <div>
+        state = {
+          search: "",
+          results: [],
+          filteredResults: []
+        };
+      
+        componentDidMount() {
+          API()
+          .then(res => this.setState({ results: res.data.results, filteredResults: res.data.results}))
+        }
+      
+        filterLastName = () => {
+          const sortedEmployees = this.state.results.sort((a, b) => {
+            return a.name.last > b.name.last ? 1 : -1
+          });
+      
+          this.setState({filteredResults: sortedEmployees})
+        }
+      
+        handleSearch = event => {
+          // Getting the value and name of the input which triggered the change
+          const value = event.target.value;
+          const name = event.target.name;
+      
+          // Updating the input's state
+          this.setState({
+            [name]: value
+          });
+      
+          const filteredEmployees = this.state.results.filter(function (employee) {
+            return employee.name.last.toLowerCase().includes(event.target.value)
+          })
+      
+          this.setState({filteredResults: filteredEmployees})
+      
+          console.log(filteredEmployees)
+          
+        };
+      
+        render() {
+          return (
             <div>
-                <SearchForm handleFormSubmit={this.handleFormSubmit} handleInputChange={this.handleInputChange} employees={this.state.employees} />
-                <SearchResults results={this.state.employees} />
+              <SearchForm handleSearch={this.handleSearch}/>
+              <button onClick={this.filterLastName}>Sort by last name</button>
+              <SearchResults employees={this.state.filteredResults} />
             </div>
-        </div>
-    )
-}
-}
-
+          );
+        }
+      }
 export default Home;

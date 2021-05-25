@@ -7,12 +7,12 @@ import Home from './Pages/home';
 function App() {
   return (
     <Router>
-    <div className="App">
-      <Header />
-      <Wrapper>
-        <Home />
-      </Wrapper>
-    </div>
+      <div className="App">
+        <Header />
+          <Wrapper>
+            <Home />
+          </Wrapper>
+      </div>
     </Router>
   );
 }

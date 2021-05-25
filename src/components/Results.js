@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Results(props) {
+function Results(props) { console.log(props)
     return (
         <div>
             <div className="container-fluid">
@@ -8,20 +8,21 @@ function Results(props) {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th scope='col'>Name</th>
-                                <th scope='col'>Phone</th>
-                                <th scope='col'>Email</th>
-                                <th scope='col'>DOB</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>DOB</th>
                             </tr>
                         </thead>
                         <tbody className="table">
-                            {props.results.map(employee => {
-                                <tr className="row">
+                            {props.employees.length && props.employees.map((employee) => {
+                               return ( <tr className="row">
                                     <td>{employee.name.first} {employee.name.last}</td>
                                     <td>{employee.phone}</td>
                                     <td>{employee.email}</td>
                                     <td>{employee.dob.date}</td>
                                 </tr>
+                            );
                             })}
                         </tbody>
                     </table>
