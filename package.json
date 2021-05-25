@@ -1,5 +1,5 @@
 {
-  "homepage": "http://julesscheil.github.io/employee-directory-react",
+  "homepage": "https://julesscheil.github.io/Employee-Directory-React/",
   "name": "employee-directory-react",
   "version": "0.1.0",
   "private": true,
@@ -11,16 +11,17 @@
     "bootstrap": "^5.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
